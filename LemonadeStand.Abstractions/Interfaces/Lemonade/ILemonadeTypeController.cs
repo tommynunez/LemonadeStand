@@ -6,7 +6,7 @@ namespace LemonadeStand.Abstractions.Interfaces
 {
 	public interface ILemonadeTypeController
 	{
-		Tassk<ActionResult> GetByIdAsync([FromRoute] int id);
+		Task<ActionResult> GetByIdAsync([FromRoute] int id);
 		Task<ActionResult> GetAllAsync([FromQuery] string search, [FromQuery] int pageIndex, [FromQuery] int pageSize, [FromQuery] string sortField = null);
 		Task<ActionResult> InsertAsync([FromBody] LemonadeType lemonadeType);
 		Task<ActionResult> UpdateAsync([FromRoute] int id, [FromBody] LemonadeType lemonadeType);
