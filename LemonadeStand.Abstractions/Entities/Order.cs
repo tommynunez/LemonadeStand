@@ -1,4 +1,6 @@
-﻿namespace LemonadeStand.Abstractions.Entities
+﻿using System.Collections.Generic;
+
+namespace LemonadeStand.Abstractions.Entities
 {
 	public class Order : Base
 	{

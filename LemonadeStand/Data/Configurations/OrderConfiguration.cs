@@ -4,10 +4,10 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace LemonadeStand.Data.Configurations
 {
-    public class OrderConfiguration : IEntityTypeConfiguration<Order>
-    {
-        public void Configure(EntityTypeBuilder<Order> builder)
-        {
+	public class OrderConfiguration : IEntityTypeConfiguration<Order>
+	{
+		public void Configure(EntityTypeBuilder<Order> builder)
+		{
 			builder.ToTable("Order");
 			builder.HasKey(li => li.Id);
 			builder.Property(x => x.FirstName)
@@ -28,18 +28,18 @@ namespace LemonadeStand.Data.Configurations
 				.IsRequired()
 				.HasColumnType("datetime")
 				.HasColumnName("Created")
-				.HasDefaultValueSql("getdate()")
+				.HasDefaultValueSql("date('now')")
 				.ValueGeneratedOnAdd();
 			builder.Property(l => l.Udpdated)
 				.HasColumnType("datetime")
 				.HasColumnName("Updated")
-				.HasDefaultValueSql("getdate()")
+				.HasDefaultValueSql("date('now')")
 				.ValueGeneratedOnAddOrUpdate();
 			builder.Property(l => l.Deleted)
 				.HasColumnType("datetime")
 				.HasColumnName("Deleted")
 				.HasDefaultValueSql(null);
 		}
-    }
+	}
 }
 

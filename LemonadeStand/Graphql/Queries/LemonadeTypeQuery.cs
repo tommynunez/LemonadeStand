@@ -1,4 +1,10 @@
-﻿using LemonadeStand.Abstractions.Interfaces;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using HotChocolate;
+using HotChocolate.Types;
+using LemonadeStand.Abstractions.Interfaces;
 using LemonadeStand.Abstractions.Models;
 using Microsoft.Toolkit.Diagnostics;
 

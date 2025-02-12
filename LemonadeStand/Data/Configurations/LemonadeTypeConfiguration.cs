@@ -1,4 +1,5 @@
-﻿using LemonadeStand.Abstractions.Entities;
+﻿using System;
+using LemonadeStand.Abstractions.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -10,8 +11,8 @@ namespace LemonadeStand.Data.Configurations
 		{
 		}
 
-        public void Configure(EntityTypeBuilder<LemonadeType> builder)
-        {
+		public void Configure(EntityTypeBuilder<LemonadeType> builder)
+		{
 			builder.ToTable("LemonadeType");
 			builder.HasKey(x => x.Id);
 			builder.Property(x => x.Name)
@@ -22,12 +23,12 @@ namespace LemonadeStand.Data.Configurations
 				.IsRequired()
 				.HasColumnType("datetime")
 				.HasColumnName("Created")
-				.HasDefaultValueSql("getdate()")
+				.HasDefaultValueSql("date('now')")
 				.ValueGeneratedOnAdd();
 			builder.Property(l => l.Udpdated)
 				.HasColumnType("datetime")
 				.HasColumnName("Updated")
-				.HasDefaultValueSql("getdate()")
+				.HasDefaultValueSql("date('now')")
 				.ValueGeneratedOnAddOrUpdate();
 			builder.Property(l => l.Deleted)
 				.HasColumnType("datetime")
@@ -47,6 +48,6 @@ namespace LemonadeStand.Data.Configurations
 				Udpdated = DateTime.Now
 			});
 		}
-    }
+	}
 }
 

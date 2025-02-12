@@ -1,4 +1,6 @@
-﻿namespace LemonadeStand.Abstractions.Models
+﻿using System.Collections.Generic;
+
+namespace LemonadeStand.Abstractions.Models
 {
 	public class Order
 	{

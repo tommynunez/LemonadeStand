@@ -1,4 +1,4 @@
-﻿using LemonadeStand.Abstractions.Entities;
+﻿using System.Collections.Generic;
 
 namespace LemonadeStand.Abstractions.Entities
 {

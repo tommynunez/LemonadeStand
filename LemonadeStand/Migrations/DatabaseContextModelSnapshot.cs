@@ -3,7 +3,6 @@ using System;
 using LemonadeStand.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -16,25 +15,19 @@ namespace LemonadeStand.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.4")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
-
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+            modelBuilder.HasAnnotation("ProductVersion", "8.0.12");
 
             modelBuilder.Entity("LemonadeStand.Abstractions.Entities.LemonadeType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Created")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
                         .HasColumnName("Created")
-                        .HasDefaultValueSql("getdate()");
+                        .HasDefaultValueSql("date('now')");
 
                     b.Property<DateTime?>("Deleted")
                         .HasColumnType("datetime")
@@ -49,7 +42,7 @@ namespace LemonadeStand.Migrations
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("datetime")
                         .HasColumnName("Updated")
-                        .HasDefaultValueSql("getdate()");
+                        .HasDefaultValueSql("date('now')");
 
                     b.HasKey("Id");
 
@@ -59,16 +52,16 @@ namespace LemonadeStand.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2022, 7, 11, 18, 48, 33, 937, DateTimeKind.Local).AddTicks(5460),
+                            Created = new DateTime(2025, 2, 5, 10, 38, 30, 562, DateTimeKind.Local).AddTicks(6730),
                             Name = "Regular Lemonade",
-                            Udpdated = new DateTime(2022, 7, 11, 18, 48, 33, 937, DateTimeKind.Local).AddTicks(5470)
+                            Udpdated = new DateTime(2025, 2, 5, 10, 38, 30, 562, DateTimeKind.Local).AddTicks(6730)
                         },
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2022, 7, 11, 18, 48, 33, 937, DateTimeKind.Local).AddTicks(5470),
+                            Created = new DateTime(2025, 2, 5, 10, 38, 30, 562, DateTimeKind.Local).AddTicks(6740),
                             Name = "Pink Lemonade",
-                            Udpdated = new DateTime(2022, 7, 11, 18, 48, 33, 937, DateTimeKind.Local).AddTicks(5480)
+                            Udpdated = new DateTime(2025, 2, 5, 10, 38, 30, 562, DateTimeKind.Local).AddTicks(6740)
                         });
                 });
 
@@ -76,9 +69,7 @@ namespace LemonadeStand.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("INTEGER");
 
                     b.Property<double>("Cost")
                         .HasColumnType("float")
@@ -88,7 +79,7 @@ namespace LemonadeStand.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
                         .HasColumnName("Created")
-                        .HasDefaultValueSql("getdate()");
+                        .HasDefaultValueSql("date('now')");
 
                     b.Property<DateTime?>("Deleted")
                         .HasColumnType("datetime")
@@ -110,7 +101,7 @@ namespace LemonadeStand.Migrations
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("datetime")
                         .HasColumnName("Updated")
-                        .HasDefaultValueSql("getdate()");
+                        .HasDefaultValueSql("date('now')");
 
                     b.HasKey("Id");
 
@@ -125,15 +116,13 @@ namespace LemonadeStand.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Created")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
                         .HasColumnName("Created")
-                        .HasDefaultValueSql("getdate()");
+                        .HasDefaultValueSql("date('now')");
 
                     b.Property<DateTime?>("Deleted")
                         .HasColumnType("datetime")
@@ -160,13 +149,13 @@ namespace LemonadeStand.Migrations
                         .HasColumnName("Phone");
 
                     b.Property<double>("TotalCost")
-                        .HasColumnType("float");
+                        .HasColumnType("REAL");
 
                     b.Property<DateTime>("Udpdated")
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("datetime")
                         .HasColumnName("Updated")
-                        .HasDefaultValueSql("getdate()");
+                        .HasDefaultValueSql("date('now')");
 
                     b.HasKey("Id");
 
@@ -177,9 +166,7 @@ namespace LemonadeStand.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("INTEGER");
 
                     b.Property<double>("Amount")
                         .HasColumnType("float")
@@ -189,7 +176,7 @@ namespace LemonadeStand.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
                         .HasColumnName("Created")
-                        .HasDefaultValueSql("getdate()");
+                        .HasDefaultValueSql("date('now')");
 
                     b.Property<DateTime?>("Deleted")
                         .HasColumnType("datetime")
@@ -207,7 +194,7 @@ namespace LemonadeStand.Migrations
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("datetime")
                         .HasColumnName("Updated")
-                        .HasDefaultValueSql("getdate()");
+                        .HasDefaultValueSql("date('now')");
 
                     b.HasKey("Id");
 
@@ -222,37 +209,37 @@ namespace LemonadeStand.Migrations
                         {
                             Id = 1,
                             Amount = 0.75,
-                            Created = new DateTime(2022, 7, 11, 18, 48, 33, 938, DateTimeKind.Local).AddTicks(1940),
+                            Created = new DateTime(2025, 2, 5, 10, 38, 30, 563, DateTimeKind.Local).AddTicks(4620),
                             LemonadeTypeId = 1,
                             SizeId = 1,
-                            Udpdated = new DateTime(2022, 7, 11, 18, 48, 33, 938, DateTimeKind.Local).AddTicks(1940)
+                            Udpdated = new DateTime(2025, 2, 5, 10, 38, 30, 563, DateTimeKind.Local).AddTicks(4630)
                         },
                         new
                         {
                             Id = 2,
                             Amount = 1.5,
-                            Created = new DateTime(2022, 7, 11, 18, 48, 33, 938, DateTimeKind.Local).AddTicks(1950),
+                            Created = new DateTime(2025, 2, 5, 10, 38, 30, 563, DateTimeKind.Local).AddTicks(4630),
                             LemonadeTypeId = 1,
                             SizeId = 2,
-                            Udpdated = new DateTime(2022, 7, 11, 18, 48, 33, 938, DateTimeKind.Local).AddTicks(1950)
+                            Udpdated = new DateTime(2025, 2, 5, 10, 38, 30, 563, DateTimeKind.Local).AddTicks(4630)
                         },
                         new
                         {
                             Id = 3,
                             Amount = 0.75,
-                            Created = new DateTime(2022, 7, 11, 18, 48, 33, 938, DateTimeKind.Local).AddTicks(1960),
+                            Created = new DateTime(2025, 2, 5, 10, 38, 30, 563, DateTimeKind.Local).AddTicks(4640),
                             LemonadeTypeId = 2,
                             SizeId = 1,
-                            Udpdated = new DateTime(2022, 7, 11, 18, 48, 33, 938, DateTimeKind.Local).AddTicks(1970)
+                            Udpdated = new DateTime(2025, 2, 5, 10, 38, 30, 563, DateTimeKind.Local).AddTicks(4640)
                         },
                         new
                         {
                             Id = 4,
                             Amount = 1.5,
-                            Created = new DateTime(2022, 7, 11, 18, 48, 33, 938, DateTimeKind.Local).AddTicks(1970),
+                            Created = new DateTime(2025, 2, 5, 10, 38, 30, 563, DateTimeKind.Local).AddTicks(4650),
                             LemonadeTypeId = 2,
                             SizeId = 2,
-                            Udpdated = new DateTime(2022, 7, 11, 18, 48, 33, 938, DateTimeKind.Local).AddTicks(1980)
+                            Udpdated = new DateTime(2025, 2, 5, 10, 38, 30, 563, DateTimeKind.Local).AddTicks(4650)
                         });
                 });
 
@@ -260,15 +247,13 @@ namespace LemonadeStand.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Created")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
                         .HasColumnName("Created")
-                        .HasDefaultValueSql("getdate()");
+                        .HasDefaultValueSql("date('now')");
 
                     b.Property<DateTime?>("Deleted")
                         .HasColumnType("datetime")
@@ -283,7 +268,7 @@ namespace LemonadeStand.Migrations
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("datetime")
                         .HasColumnName("Updated")
-                        .HasDefaultValueSql("getdate()");
+                        .HasDefaultValueSql("date('now')");
 
                     b.HasKey("Id");
 
@@ -293,16 +278,16 @@ namespace LemonadeStand.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2022, 7, 11, 18, 48, 33, 937, DateTimeKind.Local).AddTicks(7040),
+                            Created = new DateTime(2025, 2, 5, 10, 38, 30, 562, DateTimeKind.Local).AddTicks(8620),
                             Name = "Regular Size",
-                            Udpdated = new DateTime(2022, 7, 11, 18, 48, 33, 937, DateTimeKind.Local).AddTicks(7040)
+                            Udpdated = new DateTime(2025, 2, 5, 10, 38, 30, 562, DateTimeKind.Local).AddTicks(8630)
                         },
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2022, 7, 11, 18, 48, 33, 937, DateTimeKind.Local).AddTicks(7050),
+                            Created = new DateTime(2025, 2, 5, 10, 38, 30, 562, DateTimeKind.Local).AddTicks(8630),
                             Name = "Large Size",
-                            Udpdated = new DateTime(2022, 7, 11, 18, 48, 33, 937, DateTimeKind.Local).AddTicks(7060)
+                            Udpdated = new DateTime(2025, 2, 5, 10, 38, 30, 562, DateTimeKind.Local).AddTicks(8630)
                         });
                 });
 

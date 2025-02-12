@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.Generic;
+
 namespace LemonadeStand.Abstractions.Entities
 {
 	public class Product : Base

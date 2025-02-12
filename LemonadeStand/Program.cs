@@ -9,7 +9,7 @@ using LemonadeStand.Graphql.Mutations;
 using LemonadeStand.Graphql.Queries;
 using LemonadeStand.Services;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
@@ -23,7 +23,10 @@ configuration.AddJsonFile($"appsettings.{env.EnvironmentName}.json", true, true)
 services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 services.AddEndpointsApiExplorer();
-services.AddSwaggerGen();
+services.AddSwaggerGen(config =>
+  {
+      config.SwaggerDoc("v1", new OpenApiInfo() { Title = "Lemonade Stand API", Version = "v1" });
+  });
 
 #region AutoMapper
 var autoMapperconfiguration = new MapperConfiguration(cfg =>
@@ -51,7 +54,7 @@ services.AddSingleton(mapper);
 
 #region Databse Configuration
 services.AddDbContext<DatabaseContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetSection("Database:local").Value), ServiceLifetime.Transient);
+    options.UseSqlite(builder.Configuration.GetSection("Database:local").Value), ServiceLifetime.Transient);
 #endregion
 
 #region Scopes
@@ -101,10 +104,13 @@ services.AddCors(options =>
 
 var app = builder.Build();
 // Configure the HTTP request pipeline.
-if (app.Environment.IsEnvironment("Local"))
+if (app.Environment.IsEnvironment("Local") || app.Environment.IsEnvironment("Development"))
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(config =>
+    {
+        config.SwaggerEndpoint("/swagger/v1/swagger.json", "Lemonade Stand API");
+    });
 }
 
 #region migrations
